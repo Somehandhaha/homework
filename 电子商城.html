@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		  <style>
+		  	*{
+		  		margin: 0;
+		  		padding: 0;
+		  	}
+		  	nav ul{
+		  		height: 30px;
+		  		margin-left:200px;
+		  		width: 1000px;
+		  	}
+		    nav ul li {
+		      width: 70px;
+		      float: left;
+		      list-style: none;
+		      margin-right: 10px;
+		      background-color: orange;
+		      padding: 10px;
+		      color: white;
+		    }
+		    nav ul li a {
+		      text-decoration: none;
+		      color: white;
+		      line-height: 20px;
+		    }
+		    nav ul li a:hover {
+		      text-decoration: underline;
+		    }
+		    .body > ul{
+		    	width: 1000px;	
+		    	margin-top:20px ;
+		    }
+		    .body > ul >li{
+		    	width: 200px;
+		 		height: 300px;
+		    	margin-bottom: 20px;
+		    }
+		    .body > ul >li>img{
+		    	width: 200px;
+		    	height: 200px;
+		    	
+		    }
+		  </style>
+	</head>
+	<body>
+		<nav>
+			<ul></ul>
+		</div>
+		<div class="body" id="body">
+			<ul>
+			</ul>
+		</div>
+		<script>
+    	var oUl = document.querySelector('ul');
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+	        if (xhr.readyState === xhr.DONE) {
+		        try {
+		          var json = JSON.parse(xhr.responseText);
+		          var data = json.data;  
+		          for (var i = 0; i < data.length; i++) {
+		          var obj = data[i];
+	              oUl.innerHTML += '<li><a href="#">' + obj.cat_name + '</a></li>';
+	              }
+	            } catch (error) {
+	
+	            }
+	        }
+        }
+	    xhr.open('GET', 'http://h6.duchengjiu.top/shop/api_cat.php');
+	    xhr.send();
+	    var oUl1 = document.querySelectorAll("ul")[1];
+	    var bod = new XMLHttpRequest();
+	     bod.onreadystatechange = function() {
+	        if (bod.readyState === bod.DONE) {
+		        try {
+		          var json = JSON.parse(bod.responseText);
+		          var data = json.data;  
+		          for (var i = 0; i < data.length; i++) {
+		          var obj = data[i];
+	              oUl1.innerHTML += `<li><img src="${obj.goods_thumb}"><a href="#">${obj.goods_name}</a></li>`;
+	              }
+	            } catch (error) {
+	
+	            }
+	        }
+        }
+	    bod.open('GET', 'http://h6.duchengjiu.top/shop/api_goods.php');
+	    bod.send();
+  </script>
+	</body>
+</html>
