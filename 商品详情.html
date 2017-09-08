@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.hot-goods{
+				width: 500px;
+				height: 500px;
+				background: #CCCCCC;
+				margin: 100px auto;
+			}
+			img{
+				width: 500px;
+				height: 500px;
+				margin-bottom: 10px;
+			}
+			.goods_name{
+				font-size: 17px;
+				text-align: center;
+				margin-bottom: 10px;
+				
+			}
+			.price{
+				color: red;
+				font-size: 40px ;
+			}
+			button{
+				text-decoration: none;
+				color: red;
+				font-size: 20px;
+				text-align: center;
+				display: block;
+				
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="hot-goods" id="hot-goods"></div>
+		<script type="text/javascript" src="myajax.js" ></script>
+		<script>
+			function getQueryString(name){
+				var search = location.search.substr(1);
+				var reg = new RegExp("(^|&)"+name+"=([^&]*)(&|$)");
+				var result = search.match(reg);
+				console.log(result)
+				if (result === null) return null;
+				return decodeURIComponent(result[2]);
+			}
+			console.log(getQueryString("goods_id"));
+			var goods_id = getQueryString("goods_id");
+			var oGoods = document.querySelector("#hot-goods");
+			myajax.get("http://h6.duchengjiu.top/shop/api_goods.php",
+			{
+				goods_id:goods_id
+			},
+			function(err,responseText){
+				var json = JSON.parse(responseText);
+				var obj = json.data[0];
+					oGoods.innerHTML+=`<div><a href="07-cart.html"><img src="${obj.goods_thumb}"><button>添加到购物车</button></a></div><div class="goods_name">${obj.goods_name}</div><div class="price">${obj.price}¥</div>`;
+			})
+		</script>
+	</body>
+</html>

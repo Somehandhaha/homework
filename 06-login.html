@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		 <input type="text" name="username" placeholder="请输入用户名">
+		  <input type="password" name="password" placeholder="请输入密码">
+		  <input type="button" value="登录">
+		  <script src="myajax.js" charset="utf-8"></script>
+		  <script>
+		  	var oUsername= document.querySelector("input[name=username]");
+		  	var oPassword=document.querySelector("input[name=password]");
+		  	var oBtn = document.querySelector("input[type=button]");
+		  	oBtn.onclick=function(){
+		  		myajax.post('http://h6.duchengjiu.top/shop/api_user.php',
+			    {
+			      status: 'login',
+			      username: oUsername.value,
+			      password: oPassword.value
+			    }, function(error, responseText){
+			      var json = JSON.parse(responseText);
+			      localStorage.token = json.data.token;
+			      localStorage.username = json.data.username;
+			      console.log(localStorage.token);
+		  	  });
+			}
+		  </script>
+	</body>
+</html>
