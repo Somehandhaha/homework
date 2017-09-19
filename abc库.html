@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function abc(selector){
+				return new abc.fn.init(selector);
+			}
+			abc.fn = {
+				init: function(selector){
+					var elems = document.querySelectorAll(selector);
+					for (var i = 0; i < elems.length;i++) {
+						this[i] = elems[i];
+					}
+					this.length = elems.length;
+				}
+			}
+			console.log(selector)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				position:absolute;
+				width:100px;
+				height:100px;
+				background-color:green;
+			}
+		</style>
+	</head>
+	<body>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<div id="box" class="box"></div>
+		<script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$("p").html("lilong").css("color","red");
+			console.log($("p").css("width"));
+			$("#box").animate({"left":400},1000,function(){
+				alert("完成")
+			})
+			$("p").mouseenter(function(){
+				$(this).css("background","red").siblings().css("background","green")
+			})
+			$("p")[1].style.background = "orange"
+		</script>
+	</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		 <style>
+    p {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+    .box2 {
+      top: 150px;
+    }
+   </style>
+	</head>
+	<body>
+	<p class="box1"></p>
+	<p class="box2"></p>
+	<script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		/*$("p").animate({"left":700},2000,function(){
+			$(this).css("background","red")
+		})
+		$("p").animate({"left":700},2000,function(){
+			$(this).css("background","red")
+		})
+		$("p").animate({"top":200},2000,function(){
+			$(this).css("background","red")
+		})*/
+		$("p").animate({"top":200,"left":700,"opacity":0.2},2000,function(){
+	
+		})
+	</script>
+	</body>
+</html>
