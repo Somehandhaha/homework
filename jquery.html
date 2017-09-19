@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p></p>
+		<p></p>
+		<p></p>
+		<p></p>
+		<script type="text/javascript">
+			(function(){
+				function $(selector){
+					return new $.fn.init(selector);
+				}
+				$.fn = {
+					init:function(selector){
+						var elems = document.querySelectorAll(selector);
+						for (var i = 0; i < elems.length; i++){
+							this[i] = elems[i];
+						}
+						this.length = elems[i];
+					},
+					html:function(html){
+						for (var i=0;i<this.length;i++){
+							this[i].innerHTML = html;
+						}
+						return this;
+					}
+					$.fn.init.prototype = $.fn;
+					window.$ = window.query = $.fn;
+				}
+			})();
+			$("p").html("context");
+			
+		</script>
+	</body>
+</html>

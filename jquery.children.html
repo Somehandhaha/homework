@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	 <style>
+    p, h3 {
+      width: 40px;
+      height: 40px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    文本
+    <h3></h3>
+    <h3> </h3>
+    <!-- p标签里面不能包含块级元素，会变成<p></p><h3></h3><p></p> -->
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+  </div>
+  <script src="jquery-3.2.1.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+//	$("#box").children("h3").css("background","red");
+//		$("#box").children(":even").css("background","red")
+console.log($("#box").children().length);
+$("#box").children().eq(0).css("background","red")
+  </script>
+	</body>
+</html>
